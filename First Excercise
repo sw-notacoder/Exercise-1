@@ -1,0 +1,28 @@
+#Part 1
+install.packages("data.table")
+#Part 1
+#Part 2
+install.packages("datasets")
+install.packages("rvest")
+install.packages("xml2")
+library("datasets")
+library("rvest")
+library("xml2")
+cnt<- 0
+woman_df <- women
+height_mean <- mean(woman_df$height)
+weight_mean <- mean(woman_df$weight)
+for(i in 1:nrow(woman_df))
+{
+if(woman_df$height[i]>height_mean & woman_df$weight[i]<weight_mean)
+{
+  cnt<-cnt +1
+}
+}
+print("Number of women satisfying the criteria are=")
+print(cnt)
+#Part 2
+#Part 3
+data_req<- read_html("http://www.worldatlas.com/articles/the- biggest-cities-in-india.html")
+View(data_req)
+input_df<- data.frame(data_req$cities,data_req$population)
